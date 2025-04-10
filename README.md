@@ -4,7 +4,7 @@ Este proyecto utiliza como **base visual** el frontend del Sistema Integral de I
 
 ## Objetivo
 
-Desarrollar un sistema web que implemente un **chatbot con inteligencia artificial llamado AGUIBOT**, capaz de atender dudas escolares comunes de los estudiantes. El frontend sirve como plantilla para emular un entorno institucional familiar, y facilitar la integración con funcionalidades nuevas.
+Desarrollar un sistema web que implemente un **chatbot con inteligencia artificial llamado AguiBOT**, capaz de atender dudas escolares comunes de los estudiantes. El frontend sirve como plantilla para emular un entorno institucional familiar, y facilitar la integración con funcionalidades nuevas.
 
 ## Aviso Legal
 
@@ -27,7 +27,7 @@ Este proyecto es **público** para fomentar la colaboración en herramientas tec
 
 - **Respuestas automatizadas**: El backend está configurado para responder automáticamente a ciertas preguntas sobre eventos importantes, como las fechas de reinscripción.
 
-## 🚀 Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 - **Frontend**: HTML, CSS, JavaScript
 - **Backend**: Node.js con Express
