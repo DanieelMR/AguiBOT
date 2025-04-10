@@ -1,0 +1,11 @@
+@font-face {
+        font-family: "SoberanaTitular-Bold";
+        src: url("/includes/css/SoberanaTitular-Bold.otf") format("opentype");
+}
+
+#dgest {
+        font-family: "SoberanaTitular-Bold";
+        color: #969498;
+        font-size: 22px;
+}
+

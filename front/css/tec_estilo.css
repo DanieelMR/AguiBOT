@@ -1,0 +1,573 @@
+/********** ETIQUETAS **********/
+body {
+	font-family: Soberana, Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #25496B; 
+	text-align: left;
+	background: #EEEEEE url('/img/escudofondo.gif') no-repeat fixed center;
+	scrollbar-face-color: #014E82;
+	scrollbar-shadow-color: #000000;
+	scrollbar-highlight-color: #014E82;
+	scrollbar-3dlight-color: #AAAAAA;
+	scrollbar-darkshadow-color: #888888;
+	scrollbar-track-color: #AAAAAA;
+	scrollbar-arrow-color: #EEEEEE;
+}
+
+img {
+        border: none;
+}
+
+table{
+	border: 0;
+	background: #FFFFFF;
+}
+
+th {
+	font-family: Soberana, Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FFFFFF;
+	background-color: #014e82;
+	font-variant: small-caps;
+	padding: 3px 10px 3px 5px;
+}
+
+td {
+	font-family: Soberana, Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #25496B;
+	padding: 0px 0px 0px 0px;
+}
+
+h1 {
+	color: #014E82;
+	font-variant:small-caps;
+}
+
+h2 {
+	color: #0080C0;
+	font-variant:small-caps;
+}
+
+h3, h4 {
+	color: #FF8000;
+	font-variant:small-caps;
+}
+
+h5, h6 {
+	color: #25496B;
+	font-variant:small-caps;
+}
+
+p {
+	text-align: justify;
+}
+
+a:link, a:visited {
+	font-weight:bold;
+	color: #6699cc;
+	text-decoration: none;
+}
+
+a:hover{
+	color: #FF8000;
+	text-decoration: none;
+}
+
+a img {
+    border: none;
+}
+
+input {
+	border-style: solid;
+	border-bottom-width: 1px;
+	border-top-width: 2px;
+	border-left-width: 2px;
+	border-right-width: 1px;
+	border-color: #7288A0;
+	background-color:  #EEEEEE;
+	color: #014E82;
+	padding: 1px 3px 1px 3px;
+	font-size: 11px;
+}
+
+textarea {
+	border-style: solid;
+	border-bottom-width: 1px;
+	border-top-width: 2px;
+	border-left-width: 2px;
+	border-right-width: 1px;
+	border-color: #7288A0;
+	background-color: #EEEEEE;
+	color: #014E82;
+	padding: 1px 3px 1px 3px;
+	font-family:Soberana, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+/*
+select {
+	border-style: solid;	
+	background-color:#EEEEEE;	
+	color:#014E82;
+	font-size: 11px;
+}
+
+select:disabled {
+	background-color:#EEEEEE;
+	color:#CC0000;
+}
+*/
+
+SELECT {
+	font-family: Soberana, verdana;
+	font-size: 11px;
+	color: #006;
+	background-color: #DDD;
+}
+option {
+	color: #006;
+}
+option.uno {
+	background-color: #E8F8FF;
+}
+option.dos {
+	background-color: #B3E7FF;
+}
+
+label{
+	/* text-decoration:underline; */
+}
+
+fieldset {
+	border-color:#FF9900;
+	padding: 0px 10px 10px 10px;
+}
+
+legend {
+	padding: 0px 10px 5px 10px;
+	color: #FF8000;
+	font-variant: small-caps;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+/********** CLASES **********/
+.calendario{
+	font-size: 10px;
+	font-family: Soberana, Verdana,Helvetica;
+	font-weight: bold;
+	color: #FFFFFF;
+	padding: 1px 1px 2px 1px;
+	background: #638CB5;
+	border-color: #014E82;
+	border-style: solid;
+	border-bottom-width: 2px;
+	border-top-width: 1px;
+	border-left-width: 1px;
+	border-right-width: 2px;
+	width:20px;
+	height:18px;
+}
+
+.boton{
+	font-size: 12px;
+	font-family: Soberana, Verdana,Helvetica;
+	font-weight: bold;
+	font-variant:small-caps;
+	color: #FFFFFF;
+	background: #638CB5;
+	border-color: #014E82;
+	border-style: solid;
+	border-bottom-width: 2px;
+	border-top-width: 1px;
+	border-left-width: 1px;
+	border-right-width: 2px;
+}
+
+.vinculo:link, .vinculo:visited {
+	font-weight:bold;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.vinculo:hover{
+	color: #FFFF99;
+	text-decoration: none;
+}
+
+
+.vinculo_par:link, .vinculo:visited {
+	font-weight:bold;
+	color: #25496B;
+	text-decoration: none;
+}
+
+.vinculo_par:hover{
+	color: #FFFF99;
+	text-decoration: none;
+}
+
+.vinculo_non:link, .vinculo:visited {
+	font-weight:bold;
+	color: #25496B;
+	text-decoration: none;
+}
+
+.vinculo_non:hover{
+	color: #FF8000;
+	text-decoration: none;
+}
+
+.cursor_pointer{
+	cursor: pointer;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.justified {
+	text-align: justify;
+}
+
+.left {
+	text-align: left;
+}
+
+.center {
+	text-align: center;
+}
+
+.right {
+	text-align: right;
+}
+
+.expanded { 
+	font-size: 12px;
+	line-height: 16px;
+	letter-spacing: 2px;
+}
+
+/** Clases small **/
+.small_right {
+	font-size: 9px;
+	font-weight: normal;
+	text-align: right;
+}
+
+.small_left {
+	font-size: 9px;
+	font-weight: normal;
+	text-align: left;
+}
+
+.small_center {
+	font-size: 9px;
+	font-weight: normal;
+	text-align: center;
+}
+
+.small_negrita_right {
+	font-size: 9px;
+	font-weight: bold;
+	text-align: right;
+}
+
+.small_negrita_left {
+	font-size: 9px;
+	font-weight: bold;
+	text-align: left;
+}
+
+.small_negrita_center {
+	font-size: 9px;
+	font-weight: bold;
+	text-align: center;
+}
+
+/** Clases medium **/
+.medium_right {
+	font-size: 10px;
+	font-weight:normal;
+	text-align: right;
+}
+
+.medium_left {
+	font-size: 10px;
+	font-weight:normal;
+	text-align: left;
+}
+
+.medium_center {
+	font-size: 11px;
+	font-weight:normal;
+	text-align: center;
+}
+
+.medium_negrita_right {
+	font-size: 10px;
+	font-weight: bold;
+	text-align: right;
+}
+
+.medium_negrita_left {
+	font-size: 10px;
+	font-weight: bold;
+	text-align: left;
+}
+
+.medium_negrita_center {
+	font-size: 10px;
+	font-weight: bold;
+	text-align: center;
+}
+
+/** Clases normal **/
+.normal_right {
+	font-size: 11px;
+	font-weight:normal;
+	text-align: right;
+}
+
+.normal_left {
+	font-size: 11px;
+	font-weight:normal;
+	text-align: left;
+}
+
+.normal_center {
+	font-size: 11px;
+	font-weight:normal;
+	text-align: center;
+}
+
+.normal_negrita_right {
+	font-size: 11px;
+	font-weight: bold;
+	text-align: right;
+}
+
+.normal_negrita_left {
+	font-size: 11px;
+	font-weight: bold;
+	text-align: left;
+}
+
+.normal_negrita_center {
+	font-size: 11px;
+	font-weight: bold;
+	text-align: center;
+}
+
+/** Clases big **/
+.big_right {
+	font-size: 12px;
+	font-weight:normal;
+	text-align: right;
+}
+
+.big_left {
+	font-size: 12px;
+	font-weight:normal;
+	text-align: left;
+}
+
+.big_center {
+	font-size: 12px;
+	font-weight:normal;
+	text-align: center;
+}
+
+.big_negrita_right {
+	font-size: 12px;
+	font-weight: bold;
+	text-align: right;
+}
+
+.big_negrita_left {
+	font-size: 12px;
+	font-weight: bold;
+	text-align: left;
+}
+
+.big_negrita_center {
+	font-size: 12px;
+	font-weight: bold;
+	text-align: center;
+}
+
+/** Clases xbig **/
+.xbig_right {
+	font-size: 14px;
+	font-weight:normal;
+	text-align: right;
+}
+
+.xbig_left {
+	font-size: 14px;
+	font-weight:normal;
+	text-align: left;
+}
+
+.xbig_center {
+	font-size: 14px;
+	font-weight:normal;
+	text-align: center;
+}
+
+.xbig_negrita_right {
+	font-size: 14px;
+	font-weight: bold;
+	text-align: right;
+}
+
+.xbig_negrita_left {
+	font-size: 14px;
+	font-weight: bold;
+	text-align: left;
+}
+
+.xbig_negrita_center {
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+}
+
+/********** IDs **********/
+#par {
+	background-color: #BBBBBB;
+/*	color: #000000;
+	color: #25496B; */
+}
+
+#non {
+	background-color: #DDDDDD;
+/*	color: #000000;*/
+}
+
+#amarillo {
+	background-color: #FFFF66;
+}
+
+#lila {
+	background-color: #603060;
+	color: #FFFFFF;
+}
+
+#verde {
+	background-color: #A0D79F;
+	color: #000000;
+}
+
+#naranja {
+	background-color: #FF9900;
+	color: #000000;
+}
+
+#azul {
+	background-color: #0080C0;
+	color: #FFFFFF;
+}
+
+#gris {
+	background-color: #CCCCCC;
+	color: #000000;
+}
+
+#rojo {
+	background:#FF0000;
+	color:#FFFFFF;
+}
+
+#verde_s {
+	background-color: #669900; /* #800080;*/
+	color: #FFFFFF;
+}
+
+#sub {
+	text-decoration:underline;
+}
+
+#biblioteca_categorias {
+	height:100px;
+	font-family:Soberana, Verdana, Geneva, sans-serif;
+	font-size:10px;
+	color:#000000;
+	font-style:italic;
+	overflow:auto;
+}
+
+/**
+ * POPUP CONTAINER STYLES
+ */
+#popupMask {
+	position: absolute;
+	z-index: 200;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	opacity: .4;
+	filter: alpha(opacity=40);
+	/* this hack is so it works in IE
+	 * I find setting the color in the css gives me more flexibility 
+	 * than the PNG solution.
+	 */
+	background-color: transparent !important;
+	background-color: #333333;
+	/* this hack is for opera support
+	 * you can uncomment the background-image if you don't care about opera.
+	 * this gives you the flexibility to use any bg color that you want, instead of the png
+	 */
+	background-image: url("/img/maskBG.png") !important; /* For browsers Moz, Opera, etc. */
+	background-image: none;
+	background-repeat: repeat;
+	display: none;
+}
+
+#popupContainer {
+	position: absolute;
+	z-index: 201;
+	top: 0px;
+	left: 0px;
+	display: none;
+	padding: 0px;
+}
+
+#popupInner {
+	border: 2px solid #000000;
+	background-color: #ffffff;
+}
+
+#popupFrame {
+	margin: 0px;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	z-index: 202;
+}
+
+#popupTitleBar {
+	background-color: #014E82;
+	color: #ffffff;
+	font-weight: bold;
+	height: 1.3em;
+	padding: 5px;
+	border-bottom: 2px solid #000000;
+	border-top: 1px solid #78A3F2;
+	border-left: 1px solid #78A3F2;
+	border-right: 1px solid #204095;
+	position: relative;
+	z-index: 203;
+}
+
+#popupTitle {
+	float:left;
+	font-size: 1.1em;
+}
+
+#popupControls {
+	float: right;
+	cursor: pointer;
+}

@@ -1,0 +1,162 @@
+body {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-variant:small-caps;
+	text-align:center;
+	background-color: #014E82;
+}
+
+.titulo1 { font-size: 20px; color: #FFFF66;}
+
+.titulo2 { font-size: 16px; font-weight:bold; color: #DEDECA;  }
+
+
+/***********************************************/
+/* Layout Divs                                 */
+/***********************************************/
+#siteName{
+	margin: 0px;
+	padding: 16px 0px 8px 0px;
+	color: #ffffff;
+	font-weight: normal;
+}
+
+
+#masthead{
+	position: static;
+	top: 0px;
+	left: 2%;
+	right: 2%;
+	width:95.6%;
+	
+}
+
+/************* globalNav styles ****************/
+
+#globalNav{
+position: relative;
+width: 100%;
+min-width: 640px;
+height: 22px;
+color: #cccccc;
+padding: 0px;
+margin: 0px;
+background-image: url(../../img/menu/glbnav_background.gif);
+}
+
+#globalNav img{
+	margin-bottom: -4px;
+ 
+}
+
+#gnl {
+	position: absolute;
+	top: 0px;
+	left:0px;
+}
+
+#gnr {
+	position: absolute;
+	top: 0px;
+	right:0px;
+}
+
+#globalLink{
+	position: absolute;
+	top: 4px;
+	height: 15px;
+	min-width: 640px;
+	padding: 0px;
+	margin: 0px;
+	left: 10px;
+	z-index: 100;
+}
+
+a.glink, a.glink:visited{
+ 	font-size: small;
+ 	color: #000000;
+	font-weight: bold;
+	margin: 0px;
+	padding: 2px 5px 4px 5px;
+	border-right: 1px solid #8FB8BC;
+	text-decoration: none;
+}
+
+a.glink:hover{
+  	background-image: url(../../img/menu/glblnav_selected.gif);
+	text-decoration: none;
+}
+
+.skipLinks {display: none;}
+
+/************ subglobalNav styles **************/
+
+.subglobalNav{
+	position: absolute;
+	top: 104px;
+	left: 0px;
+	/*width: 100%;*/
+	min-width: 640px;
+	height: 18px;
+	padding: 0px 0px 0px 10px;
+	visibility: hidden;
+	font-size:11px;
+	font-variant: normal;
+	color: #FFFFFF;
+}
+
+.subglobalNav a:link, .subglobalNav a:visited {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.subglobalNav a:hover{
+/*	background-image: url(../../img/menu/glblnav_selected.gif);*/
+	color: #FFFF66; 
+	text-decoration: none;
+}
+
+
+/************ sub_subglobalNav styles **************/
+.sub_subglobalNav{
+	position: absolute;
+	top: 120px;
+	left: 20px;
+	/*width: 100%;*/
+	min-width: 640px;
+	height: 18px;
+	padding: 0px 0px 0px 10px;
+	visibility: hidden;
+	font-size:11px;
+	font-variant: normal;
+	color: #FFFFFF;/*DEDECA;*/
+}
+
+.sub_subglobalNav a:link, .sub_subglobalNav a:visited {
+	color: #DEDECA;
+	text-decoration: none;
+
+}
+
+.sub_subglobalNav a:hover{
+	color: #FFFF00;
+	text-decoration: none;
+}
+
+/************ sesion styles **************/
+#sesion{
+	position: absolute;
+	top: 5px;
+	right: 6px;
+	z-index: 101;
+	font-size: 11px;
+}
+ 
+#sesion a:link {
+	font-weight: bold;
+	color: #014E82;
+	text-decoration:none;
+}
+
+#sesion a:hover{
+	margin: 0px;
+}

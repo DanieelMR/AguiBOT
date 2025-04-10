@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0038)http://sii.cuautla.tecnm.mx/acceso.php -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+`
+<link rel="stylesheet" type="text/css" href="../css/tec_estilo.css">
+<script type="text/javascript" src="../js/funciones.js"></script>
+
+<script>
+function passwordLevel (clave){
+l = 0;
+v1 = 'aeiou1234567890';
+v2 = 'AEIOUbcdfghjklmnpqrst';
+v3 = 'vxyzBCDFGHJKLMNPQRST';
+v4 = 'VXYZ$@#';
+for (i = 0; i < clave.length; i++){
+if (v1.indexOf(clave[i]) != -1) l += 1;
+else if (v2.indexOf(clave[i]) != -1) l += 2;
+else if (v3.indexOf(clave[i]) != -1) l += 3;
+else if (v4.indexOf(clave[i]) != -1) l += 4;
+else l += 5;
+}
+l *= 3;
+if(l > 100)l = 100;
+return l;
+}
+</script>
+
+<script type="text/javascript">
+
+function cambiar_imagen(id, imagen)
+{
+	x=document.getElementById(id);
+	x.src = "http://sii.cuautla.tecnm.mx/img/acceso/"+imagen;
+}
+
+function mostrar(t)
+{
+	document.acceso.tipo.value = t;
+	acc = document.getElementById("tabla_acceso");
+	texto_usr = document.getElementById("user");
+	texto_pws = document.getElementById("pass");
+	asp = document.getElementById("aspirantes");
+
+	switch(t)
+	{
+		case 'p':	//asp.style.visibility = "hidden";
+							acc.style.visibility = "visible";
+							texto_usr.innerHTML = "Usuario:";
+							texto_pws.innerHTML = "Contraseña:";
+							document.acceso.usuario.focus()
+							break;
+		case 'a':	//asp.style.visibility = "hidden";
+							acc.style.visibility = "visible";
+							texto_usr.innerHTML = "No. de Control:";
+							texto_pws.innerHTML = "NIP:";
+							document.acceso.usuario.focus()
+							break;
+
+
+
+        		//if (( strcmp ($fecha_actual,"2009-03-06 00:00:01") > 0 ) &&( strcmp ($fecha_actual,"2009-04-30 23:59:59") < 0 ) ){ ?>
+		case 's':	alert ("¿Eres aspirante nuevo y NO te has registrado ?. \nProporciona el numero de solicitud y el NIP que se te proporciono para actualizar los datos de la solicitud. Si aún no te registras, el numero de solicitud y nip es 0 (cero), ES MUY IMPORTANTE QUE UTILICES UN NAVEGADOR ACTUALIZADO.");
+							acc.style.visibility = "visible";
+							texto_usr.innerHTML = "No. Solicitud:";
+							texto_pws.innerHTML = "NIP:";
+							document.acceso.usuario.focus()
+							/*acc.style.visibility = "hidden";
+							asp.style.visibility = "visible";
+							break;*/
+					
+        		
+	}
+}
+
+
+function valida_datos()
+{
+	formulario = document.acceso;
+	if(formulario.tipo.value=='p')
+	{
+		msj_usr = "usuario";
+		msj_pws = "contraseña";
+		
+		if (passwordLevel(formulario.contrasena.value) < 30){ alert('La contraseña es demasiado simple... Se le recomienda cambiarla'); }
+		
+		
+	}
+	else 
+	{
+		msj_usr = "número de control";
+		msj_pws = "nip";
+		if (formulario.tipo.value=='s')
+		{
+			if(isNaN(formulario.usuario.value))
+			{
+				window.alert("Introduce un número de solicitud numérico");	
+				formulario.usuario.focus();
+				return false;	
+			}
+		}
+		
+		if(isNaN(formulario.contrasena.value))
+		{
+			window.alert("Introduce un NIP numérico");
+			formulario.contrasena.focus();
+			return false;	
+		}
+		if(formulario.contrasena.value.length>4)
+		{
+			window.alert("Introduce un NIP de 4 caracteres");
+			formulario.contrasena.focus();
+			return false;	
+		}
+	}	
+	
+	if(formulario.usuario.value=="" || formulario.usuario.value==null)
+	{
+		window.alert("Por favor introduce tu "+msj_usr);
+		formulario.usuario.focus();
+		return false;
+	}
+	
+	if(formulario.contrasena.value=="" || formulario.contrasena.value==null)
+	{
+		window.alert("Por favor introduce tu "+msj_pws);
+		formulario.contrasena.focus();
+		return false;
+	}
+	return true
+	//formulario.submit();
+}
+</script>
+
+<title>SII :: Acceso</title>
+</head>
+
+
+
+<body> <!--onload="document.forms[0].elements[0].focus()"-->
+	
+		<form name="acceso" action="http://sii.cuautla.tecnm.mx/acceso.php" method="post" onsubmit="return valida_datos()">
+			<input name="tipo" type="hidden" value="">
+			<table width="700" border="0" align="center" cellspacing="0" cellpadding="0">
+				<tbody><tr>
+					<td align="left" bgcolor="#eeeeee" height="60"> 
+						<img src="../images/personal.gif" onclick="mostrar('p');" id="img_personal" onmouseover="cambiar_imagen('img_personal','personal_over.gif',1)" onmouseout="cambiar_imagen('img_personal','personal.gif')"> 
+					</td>
+				</tr>
+				<tr>
+					<td align="center" bgcolor="#eeeeee" height="60"> 
+						<!--ALUMNOS	-->		<img src="../images/alumnos.gif" onclick="mostrar('a');" id="img_alumnos" onmouseover="cambiar_imagen('img_alumnos','alumnos_over.gif')" onmouseout="cambiar_imagen('img_alumnos','alumnos.gif')">	
+
+									</td>
+				</tr>
+				<tr>
+					<td align="right" bgcolor="#eeeeee" height="60"> 
+						<img src="../images/aspirantes.gif" onclick="mostrar('s');" id="img_aspirantes" onmouseover="cambiar_imagen('img_aspirantes','aspirantes_over.gif',1)" onmouseout="cambiar_imagen('img_aspirantes','aspirantes.gif')">
+					</td>
+				</tr>
+			</tbody></table>
+
+<h1>
+<div align="center">
+<!-- 		
+<a href="https://www.cuautla.tecnm.mx/" target="_blank">		www.cuautla.tecnm.mx </a>
+
+
+
+<table align="center" border="0" cellpadding="0" width="100%" >
+	
+        	<tr>
+            	<th align="center"> Manual de Inscripci�n </th>
+            </tr>
+            <tr>
+              <td id="non"> Recuerda que en el <b>Manual de Inscripci�n </b> se encuentran los pasos a seguir
+				con lo que respecta a tu proceso de Reinscripci�n. 
+<a href="http://www.cuautla.tecnm.mx" target="_blank">          www.cuautla.tec$
+<br>
+<br>
+<br>
+
+
+		<a href="https://www.cuautla.tecnm.mx/avisos/division/2021/PROCESO_REINSCRIPCI%C3%93N_ENERO-UNIO_1.pdf" target="_blank">
+		MANUAL DE REINSCRIPCI�N .</a>
+		</td>
+	    </tr>
+
+ -->
+
+<!--<a href="https://www.youtube.com/watch?v=vSLyj6qDdSI" target="_blanck">          Ceremonia de Inicio de Cursos
+<br> Lunes 1 de Marzo
+<br> 09:00 AM-->
+<div align="center"><img src="../images/sirma_aguila.png" width="150" height="150"/></div>
+<a href="http://www.cuautla.tecnm.mx/" target="_blank">          www.cuautla.tecnm.mx
+<br>
+<br>
+<br>
+</a><a href="http://pit.cuautla.tecnm.mx/" target="_blank">		"Si eres de 1er y 2do Semestre Visita esta liga: pit.cuautla.tecnm.mx" </a>
+<br>
+
+	
+<!-- Ícono del robot -->
+<div id="chatbot-icon">🤖</div>
+
+<!-- Ventana de chat -->
+<div id="chatbox" class="hidden">
+  <div id="chat-messages"></div>
+  <input type="text" id="chat-input" placeholder="Escribe tu duda...">
+  <button id="send-button">Enviar</button>
+</div>
+
+<!-- Enlazar estilos del bot -->
+<link rel="stylesheet" href="../css/chatbot.css">
+
+<!-- Enlazar script del bot -->
+<script src="../js/chatbot.js"></script>
+
+
+
+
+</div>
+</h1>			
+
+
+									<div align="center" style="visibility:hidden" id="tabla_acceso">
+				<table align="center" width="360" cellspacing="2" cellpadding="2" border="0">
+					<tbody><tr>
+						<th align="center" colspan="2"> Autentificacin para acceso al sistema </th>
+					</tr>
+					<tr>
+						<td colspan="2" align="center" id="gris"> Introduce los datos correspondientes:</td>
+					</tr>
+					<tr>
+						<th align="left" width="110" id="user"> No. Solicitud: </th>
+						<td align="left" width="179"> <input type="Text" name="usuario" size="35" maxlength="30"> </td>
+					</tr>
+					<tr>
+						<th align="left" id="pass"> NIP: </th>
+						<td align="left"><input type="password" id="contrasena" name="contrasena" size="35" maxlength="15"></td>
+					</tr>
+				</tbody></table>
+				<br>
+				<div align="center">
+					<input class="boton" type="submit" value="Acceso">
+				</div>
+			</div>
+		</form>
+		
+
+
+
+<!--  @1.1 -->
+<!--  @20070821 -->
+
+<script type="text/javascript">
+	// Prevenir el envío al presionar Enter en el formulario
+	document.addEventListener('DOMContentLoaded', function() {
+	  document.querySelector('form[name="acceso"]').addEventListener('keydown', function(event) {
+		// Detecta si se presiona la tecla Enter
+		if (event.key === 'Enter') {
+		  event.preventDefault(); // Evita que se reinicie la página
+		  console.log('Se ha prevenido el envío al presionar Enter.');
+		}
+	  });
+	});
+  </script>
+  
+
+
+</body></html>

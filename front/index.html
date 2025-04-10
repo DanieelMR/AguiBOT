@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<!-- saved from url=(0028)http://sii.cuautla.tecnm.mx/ -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<link rel="icon" href="./images/sirma_aguila.png" type="image/x-icon">
+<script type="text/javascript">
+	var currenttime = 'April 09, 2025 05:30:10';
+	//var currenttime = 'April 09, 2025 05:30:10';
+	var montharray=new Array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Setiembre","Octubre","Noviembre","Diciembre");
+	var serverdate=new Date(currenttime);
+	
+	function padlength(what)
+		{
+			var output=(what.toString().length==1)? "0"+what : what;
+			return output;
+		}
+	
+	function displaytime()
+		{
+			serverdate.setSeconds(serverdate.getSeconds()+1);
+			var datestring=montharray[serverdate.getMonth()]+" "+padlength(serverdate.getDate())+", "+serverdate.getFullYear();
+			var timestring=padlength(serverdate.getHours())+":"+padlength(serverdate.getMinutes())+":"+padlength(serverdate.getSeconds());
+			document.title="SII:."+" "+datestring+" "+timestring;//+" "+currenttime;
+		}
+//setInterval("displaytime()", 1000);
+
+ </script>
+
+
+
+
+
+<title>SII</title>
+</head>
+
+<frameset rows="100,*" frameborder="no" border="0" framespacing="0">
+  <frame src="./components/encabezado.html" name="topFrame" scrolling="No" noresize="noresize" id="topFrame" title="encabezado">
+    <frame src="./components/acceso.html" name="mainFrame" id="mainFrame" title="principal">
+</frameset>
+
+<noframes><body>
+</body>
+</noframes>
+</html>
