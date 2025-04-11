@@ -200,15 +200,65 @@ function valida_datos()
 <br>
 
 	
-<!-- Ícono del robot -->
-<div id="chatbot-icon">🤖</div>
+<!-- Chatbot insertado aquí -->
+<div class="aguibot-container">
+	<button id="aguibot-button" type="button" class="aguibot-button">
+		<div class="aguibot-button-icon">
+			<i class="fas fa-robot" style="color: white; font-size: 24px;"></i>
+		</div>
+		<div class="aguibot-pulse"></div>
+	</button>
 
-<!-- Ventana de chat -->
-<div id="chatbox" class="hidden">
-  <div id="chat-messages"></div>
-  <input type="text" id="chat-input" placeholder="Escribe tu duda...">
-  <button id="send-button">Enviar</button>
+	<div id="aguibot-chat-window" class="aguibot-chat-window hidden">
+		<div class="aguibot-header">
+			<div class="aguibot-header-info">
+				<div class="aguibot-avatar">
+					<i class="fas fa-robot" style="color: #0056b3; font-size: 24px;"></i>
+				</div>
+				<div class="aguibot-info"> 
+					<h3>AguiBOT</h3>
+					<span class="aguibot-status">En línea</span>
+				</div>
+			</div>
+			<div class="aguibot-actions">
+				<button id="aguibot-minimize" type="button" class="aguibot-action-button"><i class="fas fa-minus"></i></button>
+				<button id="aguibot-close" type="button" class="aguibot-action-button"><i class="fas fa-times"></i></button>
+			</div>
+		</div>
+
+		<div class="aguibot-messages" id="aguibot-messages">
+			<div class="aguibot-message aguibot-bot-message">
+				<div class="aguibot-bot-avatar">
+					<i class="fas fa-robot" style="color: #0056b3; font-size: 16px;"></i>
+				</div>
+				<div class="aguibot-message-content">
+					<p>¡Hola! Soy AguiBOT, tu asistente virtual del ITCA.</p>
+					<p>¿En qué puedo ayudarte hoy?</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="aguibot-suggestions">
+			<button class="aguibot-suggestion" type="button">¿Cómo recupero mi NIP?</button>
+			<button class="aguibot-suggestion" type="button">Proceso de inscripción</button>
+			<button class="aguibot-suggestion" type="button">Fechas importantes</button>
+		</div>
+
+		<div class="aguibot-input-area">
+			<input type="text" id="aguibot-input" class="aguibot-input" placeholder="Escribe un mensaje..." autocomplete="off" />
+			<button id="aguibot-send" type="button" class="aguibot-send-button">
+				<i class="fas fa-paper-plane"></i>
+			</button>
+		</div>
+
+		<div class="aguibot-footer">
+			<span>Powered by ITCA</span>
+		</div>
+	</div>
 </div>
+
+<!-- Font Awesome para los íconos -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
 <!-- Enlazar estilos del bot -->
 <link rel="stylesheet" href="../css/chatbot.css">
