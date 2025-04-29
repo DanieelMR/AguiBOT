@@ -10,6 +10,6 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../front')));
 
 // Rutas de API (más adelante)
-app.use('/api', require('./routes/apiRoutes'));
+app.use('/api', require('./routes/apiChatbot'));
 
 module.exports = app;
