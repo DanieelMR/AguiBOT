@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const message = chatInput.value.trim();
     if (message) {
       addUserMessage(message);  // Mostrar el mensaje del usuario
+      console.log('Mensaje enviado:', message);  // Log del mensaje enviado
       chatInput.value = '';  // Limpiar el input
 
       try {
@@ -72,6 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
     button.addEventListener('click', function (e) {
       e.stopPropagation();
       const suggestionText = this.textContent;
+      console.log('Sugerencia clickeada:', suggestionText);  // Log de la sugerencia clickeada
       addUserMessage(suggestionText);  // Mostrar lo que el usuario clickeó
       chatInput.value = '';            // Limpiar input
       fetch('/api/chatbot', {
