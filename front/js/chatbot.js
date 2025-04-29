@@ -1,5 +1,5 @@
 // Script del chatbot
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const chatButton = document.getElementById('aguibot-button');
   const chatWindow = document.getElementById('aguibot-chat-window');
   const closeButton = document.getElementById('aguibot-close');
@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const suggestionButtons = document.querySelectorAll('.aguibot-suggestion');
 
   // Abrir/cerrar el chat
-  chatButton.addEventListener('click', function() {
+  chatButton.addEventListener('click', function (e) {
+    e.stopPropagation();
     chatWindow.classList.toggle('hidden');
     if (!chatWindow.classList.contains('hidden')) {
       chatInput.focus();
@@ -18,60 +19,77 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // Cerrar el chat
-  closeButton.addEventListener('click', function() {
+  closeButton.addEventListener('click', function (e) {
+    e.stopPropagation();
     chatWindow.classList.add('hidden');
   });
 
   // Minimizar el chat
-  minimizeButton.addEventListener('click', function() {
+  minimizeButton.addEventListener('click', function (e) {
+    e.stopPropagation();
     chatWindow.classList.add('hidden');
   });
 
-  // Enviar mensaje
-  function sendMessage() {
+  // Enviar mensaje al backend
+  async function sendMessage() {
     const message = chatInput.value.trim();
     if (message) {
-      // Añadir mensaje del usuario
       addUserMessage(message);
       chatInput.value = '';
 
-      // Simular respuesta del bot (aquí conectarías con tu backend)
-      setTimeout(function() {
-        addBotMessage("Estoy procesando tu consulta sobre: " + message);
-      }, 1000);
+      try {
+        const response = await fetch('/api/chatbot', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ pregunta: message })
+        });
+
+        const data = await response.json();
+        addBotMessage(data.respuesta || "Lo siento, hubo un error procesando tu mensaje.");
+      } catch (error) {
+        console.error('Error enviando mensaje al servidor:', error);
+        addBotMessage("Ocurrió un error al contactar al servidor. Intenta más tarde.");
+      }
     }
   }
 
-  sendButton.addEventListener('click', sendMessage);
+  // Eventos para enviar mensaje con botón o Enter
+  sendButton.addEventListener('click', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    sendMessage();
+  });
 
-  chatInput.addEventListener('keypress', function(e) {
+  chatInput.addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
+      e.preventDefault();
+      e.stopPropagation();
       sendMessage();
     }
   });
 
   // Manejo de sugerencias
   suggestionButtons.forEach(button => {
-    button.addEventListener('click', function() {
+    button.addEventListener('click', function (e) {
+      e.stopPropagation();
       const suggestionText = this.textContent;
-      addUserMessage(suggestionText);
-
-      // Simular respuesta a la sugerencia
-      setTimeout(function() {
-        let response = "";
-        if (suggestionText.includes("NIP")) {
-          response = "Para recuperar tu NIP, debes acudir a la ventanilla de servicios escolares con una identificación oficial.";
-        } else if (suggestionText.includes("inscripción")) {
-          response = "El proceso de inscripción consta de 5 pasos: 1) Pago de cuota, 2) Selección de materias, 3) Generación de horario, 4) Validación, 5) Impresión de carga académica.";
-        } else if (suggestionText.includes("Fechas")) {
-          response = "Las fechas importantes para este semestre son:\n- Inscripciones: 15-19 de agosto\n- Inicio de clases: 22 de agosto\n- Evaluaciones: 10-14 de octubre";
-        }
-        addBotMessage(response);
-      }, 1000);
+      addUserMessage(suggestionText);  // Mostrar lo que el usuario clickeó
+      chatInput.value = '';            // Limpiar input
+      fetch('/api/chatbot', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ pregunta: suggestionText })
+      })
+      .then(res => res.json())
+      .then(data => addBotMessage(data.respuesta || "Lo siento, no pude procesar tu sugerencia."))
+      .catch(err => {
+        console.error('Error al contactar al backend:', err);
+        addBotMessage("Ocurrió un error al contactar al servidor. Intenta más tarde.");
+      });
     });
   });
 
-  // Funciones para añadir mensajes
+  // Mostrar mensajes
   function addUserMessage(text) {
     const messageDiv = document.createElement('div');
     messageDiv.className = 'aguibot-message aguibot-user-message';
@@ -102,17 +120,4 @@ document.addEventListener('DOMContentLoaded', function() {
   function scrollToBottom() {
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
   }
-
-  sendButton.addEventListener('click', function(e) {
-    e.preventDefault();  // 🚫 Detiene el comportamiento por defecto del botón (como enviar un form)
-    sendMessage();
-  });
-  
-  chatInput.addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-      e.preventDefault();  // 🚫 Previene el submit del form al presionar Enter
-      sendMessage();
-    }
-  });
-
 });
