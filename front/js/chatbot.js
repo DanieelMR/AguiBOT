@@ -1,5 +1,5 @@
-// Script del chatbot
-document.addEventListener('DOMContentLoaded', function () {
+// chatbot.js
+document.addEventListener('DOMContentLoaded', () => {
   const chatButton = document.getElementById('aguibot-button');
   const chatWindow = document.getElementById('aguibot-chat-window');
   const closeButton = document.getElementById('aguibot-close');
@@ -9,8 +9,35 @@ document.addEventListener('DOMContentLoaded', function () {
   const messagesContainer = document.getElementById('aguibot-messages');
   const suggestionButtons = document.querySelectorAll('.aguibot-suggestion');
 
-  // Abrir/cerrar el chat
-  chatButton.addEventListener('click', function (e) {
+  // Función general para enviar preguntas al backend
+  async function enviarPregunta(pregunta) {
+    try {
+      const response = await fetch('/api/chatbot', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ pregunta })
+      });
+
+      const data = await response.json();
+      addBotMessage(data.respuesta || "Lo siento, hubo un error procesando tu mensaje.");
+    } catch (error) {
+      console.error('Error enviando mensaje al servidor:', error);
+      addBotMessage("Ocurrió un error al contactar al servidor. Intenta más tarde.");
+    }
+  }
+
+  // Función para mandar el mensaje del input
+  async function handleSendMessage() {
+    const message = chatInput.value.trim();
+    if (message) {
+      addUserMessage(message);
+      chatInput.value = '';
+      await enviarPregunta(message);
+    }
+  }
+
+  // Abrir/Cerrar/Minimizar
+  chatButton.addEventListener('click', (e) => {
     e.stopPropagation();
     chatWindow.classList.toggle('hidden');
     if (!chatWindow.classList.contains('hidden')) {
@@ -18,78 +45,42 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // Cerrar el chat
-  closeButton.addEventListener('click', function (e) {
+  closeButton.addEventListener('click', (e) => {
     e.stopPropagation();
     chatWindow.classList.add('hidden');
   });
 
-  // Minimizar el chat
-  minimizeButton.addEventListener('click', function (e) {
+  minimizeButton.addEventListener('click', (e) => {
     e.stopPropagation();
     chatWindow.classList.add('hidden');
   });
 
-  // Enviar mensaje al backend
-  async function sendMessage() {
-    const message = chatInput.value.trim();
-    if (message) {
-      addUserMessage(message);
-      chatInput.value = '';
-
-      try {
-        const response = await fetch('/api/chatbot', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ pregunta: message })
-        });
-
-        const data = await response.json();
-        addBotMessage(data.respuesta || "Lo siento, hubo un error procesando tu mensaje.");
-      } catch (error) {
-        console.error('Error enviando mensaje al servidor:', error);
-        addBotMessage("Ocurrió un error al contactar al servidor. Intenta más tarde.");
-      }
-    }
-  }
-
-  // Eventos para enviar mensaje con botón o Enter
-  sendButton.addEventListener('click', function (e) {
+  // Eventos para enviar mensaje
+  sendButton.addEventListener('click', async (e) => {
     e.preventDefault();
     e.stopPropagation();
-    sendMessage();
+    await handleSendMessage();
   });
 
-  chatInput.addEventListener('keypress', function (e) {
+  chatInput.addEventListener('keypress', async (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
       e.stopPropagation();
-      sendMessage();
+      await handleSendMessage();
     }
   });
 
-  // Manejo de sugerencias
+  // Sugerencias predefinidas
   suggestionButtons.forEach(button => {
-    button.addEventListener('click', function (e) {
+    button.addEventListener('click', async (e) => {
       e.stopPropagation();
-      const suggestionText = this.textContent;
-      addUserMessage(suggestionText);  // Mostrar lo que el usuario clickeó
-      chatInput.value = '';            // Limpiar input
-      fetch('/api/chatbot', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ pregunta: suggestionText })
-      })
-      .then(res => res.json())
-      .then(data => addBotMessage(data.respuesta || "Lo siento, no pude procesar tu sugerencia."))
-      .catch(err => {
-        console.error('Error al contactar al backend:', err);
-        addBotMessage("Ocurrió un error al contactar al servidor. Intenta más tarde.");
-      });
+      const suggestionText = button.textContent;
+      addUserMessage(suggestionText);
+      await enviarPregunta(suggestionText);
     });
   });
 
-  // Mostrar mensajes
+  // Funciones para mostrar mensajes
   function addUserMessage(text) {
     const messageDiv = document.createElement('div');
     messageDiv.className = 'aguibot-message aguibot-user-message';
