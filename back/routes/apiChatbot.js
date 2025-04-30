@@ -11,7 +11,7 @@ router.post('/chatbot', (req, res) => {
   const lowerPregunta = pregunta.toLowerCase();
 
   if (lowerPregunta.includes('reinscripcion')) {
-    respuesta = "Las reinscripciones son en agosto.";
+    respuesta = "Las reinscripciones son en diciembre.";
   } else if (lowerPregunta.includes('beca')) {
     respuesta = "La beca será depositada este mes de abril.";
   } else if (lowerPregunta.includes('kardex')) {
