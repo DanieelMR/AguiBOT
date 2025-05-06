@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../front')));
 
 // Rutas de API
-const apiChatbot = require('./routes/apiChatbot');
+const apiChatbot = require('./routes/chatbotRoutes');
 app.use('/api', apiChatbot);
 
 module.exports = app;
