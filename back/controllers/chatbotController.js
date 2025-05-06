@@ -7,7 +7,7 @@ exports.responderPregunta = (req, res) => {
     if (lowerPregunta.includes('reinscripcion')) {
       respuesta = "Las reinscripciones son en diciembre.";
     } else if (lowerPregunta.includes('beca')) {
-      respuesta = "La beca será depositada este mes de abril.";
+      respuesta = "La beca será depositada hasta el mes de junio.";
     } else if (lowerPregunta.includes('kardex')) {
       respuesta = "Puedes consultar tu kardex entrando al SII y seleccionando la opción en el menú lateral.";
     } else if (lowerPregunta.includes('nip')) {
