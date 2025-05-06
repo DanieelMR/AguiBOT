@@ -103,12 +103,12 @@
 
 .aguibot-info h3 {
 	margin: 0;
-	font-size: 16px;
+	font-size: 17px;
 	font-weight: 600;
 }
 
 .aguibot-status {
-	font-size: 12px;
+	font-size: 13px;
 	opacity: 0.8;
 }
 
@@ -183,7 +183,7 @@
   padding: 10px 15px;
   border-radius: 18px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  font-size: 13px;
+  font-size: 15px;
   min-width: 40px;
   min-height: 20px;
 }
@@ -224,7 +224,7 @@
 	border: 1px solid #e0e0e0;
 	border-radius: 18px;
 	padding: 8px 15px;
-	font-size: 12px;
+	font-size: 13px;
 	white-space: nowrap;
 	cursor: pointer;
 	transition: all 0.2s;
@@ -248,7 +248,7 @@
 	background-color: #f5f7f9;
 	padding: 12px 15px;
 	border-radius: 20px;
-	font-size: 14px;
+	font-size: 15px;
 	outline: none;
 }
 
